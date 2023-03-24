@@ -13,7 +13,7 @@ namespace Frogger2
         public int width = 30;
         public int height = 10;
 
-        public Player(int_x, int_y)
+        public Player(int _x, int _y)
         {
             x = _x;
             y = _y;

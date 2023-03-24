@@ -12,6 +12,8 @@ namespace Frogger2
 {
     public partial class GameScreen : UserControl
     {
+        Player hero;
+
         Cars carObstacle;
         List<Cars> balls = new List<Cars>();
 
@@ -52,6 +54,8 @@ namespace Frogger2
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawRectangle(frogPen, 20, 20, 20, 20);
+
+            //if frog moves up, water row moves down
         }
     }
 }
