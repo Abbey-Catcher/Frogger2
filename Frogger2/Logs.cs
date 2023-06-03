@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace Frogger2
 {
-    internal class Cars
+    public class Logs
     {
         public int x, y, xSpeed, ySpeed;
         public int sizeL = 20;
-        public int sizeW = 15;
-        //public Image carImage;
+        public int sizeW = 12;
 
-        public Cars (int _x, int _y, int _xSpeed, int _ySpeed)
+        public Logs(int _x, int _y, int _xSpeed, int _ySpeed)
         {
             x = _x;
             y = _y;
@@ -22,30 +21,17 @@ namespace Frogger2
             ySpeed = _ySpeed;
         }
 
-
         public void Move(int width, int height)
         {
             x += xSpeed;
-            //Rectangle car1 = new Rectangle(x, y, height, width);
         }
-
-        //public void Collision(Ball b)
-        //{
-        //    Rectangle ballRec = new Rectangle(x, y, size, size);
-        //    Rectangle ball2Rec = new Rectangle(b.x, b.y, b.size, b.size);
-
-        //    if (ballRec.IntersectsWith(ball2Rec))
-        //    {
-        //        ySpeed *= -1;
-        //    }
-        //}
 
         public bool Collision(Player p)
         {
-            Rectangle carRec = new Rectangle(x, y, sizeL, sizeW);
+            Rectangle logRec = new Rectangle(x, y, sizeL, sizeW);
             Rectangle playerRec = new Rectangle(p.x, p.y, p.width, p.height);
 
-            if (carRec.IntersectsWith(playerRec))
+            if (logRec.IntersectsWith(playerRec))
             {
                 if (ySpeed > 0)
                 {

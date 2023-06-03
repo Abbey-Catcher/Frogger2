@@ -15,21 +15,12 @@ namespace Frogger2
         public Form1()
         {
             InitializeComponent();
-            ChangeScreen(this, new MainScreen());
-        }
 
-        public static void ChangeScreen(Form f, UserControl next)
-        {
             MainScreen ms = new MainScreen();
-
-            ms.Location = new Point((f.ClientSize.Width - ms.Width) / 2,
-                (f.ClientSize.Height - ms.Height) / 2);
-
-            f.Controls.Add(ms);
-            next.Focus();
+            this.Controls.Add(ms);
         }
         
-        public static void ChangeScreen2(UserControl current, UserControl next)
+        public static void ChangeScreen(UserControl current, UserControl next)
         {
             Form f = current.FindForm();
             f.Controls.Remove(current);
@@ -37,8 +28,9 @@ namespace Frogger2
             next.Location = new Point((f.ClientSize.Width - next.Width) / 2,
                 (f.ClientSize.Height - next.Height) / 2);
 
-            next.Focus();
+            //make form1 the same size as new screens
             f.Controls.Add(next);
+            next.Focus();
         }
     }
 }

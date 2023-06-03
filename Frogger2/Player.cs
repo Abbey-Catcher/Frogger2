@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Frogger2
 {
-    internal class Player
+    public class Player
     {
         public int x, y;
         public int speed = 6;
-        public int width = 30;
+        public int width = 10;
         public int height = 10;
+        public int lives = 3;
 
         public Player(int _x, int _y)
         {

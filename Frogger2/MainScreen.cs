@@ -19,7 +19,7 @@ namespace Frogger2
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            Form1.ChangeScreen2(this, new GameScreen());
+            Form1.ChangeScreen(this, new GameScreen());
         }
 
         private void exitButton_Click(object sender, EventArgs e)
