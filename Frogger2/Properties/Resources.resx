@@ -121,4 +121,7 @@
   <data name="car_Frogger" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\car-Frogger.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FroggerLog" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FroggerLog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

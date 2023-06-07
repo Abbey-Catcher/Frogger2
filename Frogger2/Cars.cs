@@ -10,8 +10,7 @@ namespace Frogger2
     internal class Cars
     {
         public int x, y, xSpeed, ySpeed;
-        public int sizeL = 20;
-        public int sizeW = 15;
+        public int size = 20;
         //public Image carImage;
 
         public Cars (int _x, int _y, int _xSpeed, int _ySpeed)
@@ -42,14 +41,14 @@ namespace Frogger2
 
         public bool Collision(Player p)
         {
-            Rectangle carRec = new Rectangle(x, y, sizeL, sizeW);
+            Rectangle carRec = new Rectangle(x, y, size, size);
             Rectangle playerRec = new Rectangle(p.x, p.y, p.width, p.height);
 
             if (carRec.IntersectsWith(playerRec))
             {
                 if (ySpeed > 0)
                 {
-                    y = p.y - sizeW;
+                    y = p.y - size;
                 }
                 else
                 {

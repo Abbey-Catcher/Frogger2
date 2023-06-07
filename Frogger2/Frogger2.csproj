@@ -113,5 +113,8 @@
   <ItemGroup>
     <None Include="Resources\car-Frogger.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FroggerLog.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

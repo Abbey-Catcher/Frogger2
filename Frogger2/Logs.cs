@@ -10,8 +10,7 @@ namespace Frogger2
     public class Logs
     {
         public int x, y, xSpeed, ySpeed;
-        public int sizeL = 20;
-        public int sizeW = 12;
+        public int size = 20;
 
         public Logs(int _x, int _y, int _xSpeed, int _ySpeed)
         {
@@ -28,14 +27,14 @@ namespace Frogger2
 
         public bool Collision(Player p)
         {
-            Rectangle logRec = new Rectangle(x, y, sizeL, sizeW);
+            Rectangle logRec = new Rectangle(x, y, size, size);
             Rectangle playerRec = new Rectangle(p.x, p.y, p.width, p.height);
 
             if (logRec.IntersectsWith(playerRec))
             {
                 if (ySpeed > 0)
                 {
-                    y = p.y - sizeW;
+                    y = p.y - size;
                 }
                 else
                 {

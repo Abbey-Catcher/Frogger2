@@ -105,7 +105,7 @@ namespace Frogger2
                 L1counter = 0;
             }
             L2counter++;
-            if (L2counter > 25 && L2counter < 100)
+            if (L2counter > 30 && L2counter < 75)
             {
                 Logs newLog = new Logs(0, 35, 5, 5);
                 logs.Add(newLog);
@@ -170,19 +170,20 @@ namespace Frogger2
 
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawRectangle(frogPen, hero.x, hero.y, 10, 10);
             e.Graphics.FillRectangle(blueBrush, waterway);
             e.Graphics.FillRectangle(blueBrush, waterway2);
             e.Graphics.FillRectangle(grayBrush, roadway);
             foreach (Cars c in cars)
             {
                 //e.Graphics.FillRectangle(TestBrush, c.x, c.y, c.sizeL, c.sizeW);
-                e.Graphics.DrawImage(Properties.Resources.car_Frogger, c.x, c.y);
+                e.Graphics.DrawImage(Properties.Resources.car_Frogger, c.x, c.y, 40, 20);
             }
             foreach (Logs l in logs)
             {
-                e.Graphics.FillRectangle(TestBrush, l.x, l.y, l.sizeL, l.sizeL);
+                e.Graphics.DrawImage(Properties.Resources.FroggerLog, l.x, l.y, 40, 20);
             }
+
+            e.Graphics.DrawRectangle(frogPen, hero.x, hero.y, 10, 10);
         }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
