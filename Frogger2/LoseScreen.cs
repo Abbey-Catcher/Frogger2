@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Frogger2
 {
-    public partial class WinScreen : UserControl
+    public partial class LoseScreen : UserControl
     {
-        public WinScreen()
+        public LoseScreen()
         {
             InitializeComponent();
         }

@@ -31,12 +31,14 @@ namespace Frogger2
         Brush blueBrush = new SolidBrush(Color.DarkBlue);
         Brush grayBrush = new SolidBrush(Color.DarkGray);
         Brush TestBrush = new SolidBrush(Color.Red);
-        Brush LogBrush = new SolidBrush(Color.Brown);
+        //Brush LogBrush = new SolidBrush(Color.Brown);
 
 
-        Rectangle waterway = new Rectangle(0, 30, 610, 30);
-        Rectangle waterway2 = new Rectangle(0, 120, 610, 30);
-        Rectangle roadway = new Rectangle(0, 200, 610, 30);
+        Rectangle waterway = new Rectangle(0, 60, 610, 30);
+        Rectangle waterway2 = new Rectangle(0, 150, 610, 30);
+        Rectangle roadway = new Rectangle(0, 230, 610, 30);
+
+        Rectangle endPoint = new Rectangle(285, 20, 15, 15);
 
         public GameScreen()
         {
@@ -47,6 +49,7 @@ namespace Frogger2
         public void InitializeGame()
         {
             hero = new Player(300, 300);
+            livesLabel.Text = "Lives: " + hero.lives;
         }
 
         private void keyup(object sender, KeyEventArgs e)
@@ -92,22 +95,21 @@ namespace Frogger2
             Ccounter++;
             if (Ccounter > 50 && Ccounter < 100)
             {
-                Cars newCar = new Cars(0, 205, 5, 5);
-                //newCar.carImage = Properties.Resources.car_Frogger;
+                Cars newCar = new Cars(0, 235, 5, 5);
                 cars.Add(newCar);
                 Ccounter = 0;
             }
             L1counter++;
             if (L1counter > 25 && L1counter <  100) 
             { 
-                Logs newLog = new Logs(0, 125, 5, 5);
+                Logs newLog = new Logs(0, 155, 5, 5);
                 logs.Add(newLog);
                 L1counter = 0;
             }
             L2counter++;
             if (L2counter > 30 && L2counter < 75)
             {
-                Logs newLog = new Logs(0, 35, 5, 5);
+                Logs newLog = new Logs(0, 65, 5, 5);
                 logs.Add(newLog);
                 L2counter = 0;
             }
@@ -145,8 +147,7 @@ namespace Frogger2
                 if (c.Collision(hero))
                 {
                     hero.lives -= 1;
-                    hero.x = 300;
-                    hero.y = 300;
+                    livesLabel.Text = "Lives: " + hero.lives;
                 }
             }
             foreach (Logs l in logs)
@@ -154,8 +155,7 @@ namespace Frogger2
                 if (l.Collision(hero))
                 {
                     hero.lives -= 1;
-                    hero.x = 300;
-                    hero.y = 300;
+                    livesLabel.Text = "Lives: " + hero.lives;
                 }
             }
             
@@ -163,6 +163,7 @@ namespace Frogger2
             if (hero.lives == 0)
             {
                 gameTimer.Stop();
+                Form1.ChangeScreen(this, new WinScreen());
             }
 
             Refresh();
@@ -173,9 +174,9 @@ namespace Frogger2
             e.Graphics.FillRectangle(blueBrush, waterway);
             e.Graphics.FillRectangle(blueBrush, waterway2);
             e.Graphics.FillRectangle(grayBrush, roadway);
+            e.Graphics.FillRectangle(TestBrush, endPoint);
             foreach (Cars c in cars)
             {
-                //e.Graphics.FillRectangle(TestBrush, c.x, c.y, c.sizeL, c.sizeW);
                 e.Graphics.DrawImage(Properties.Resources.car_Frogger, c.x, c.y, 40, 20);
             }
             foreach (Logs l in logs)
