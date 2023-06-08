@@ -11,7 +11,7 @@ namespace Frogger2
     {
         public int x, y, xSpeed, ySpeed;
         public int size = 20;
-        //public Image carImage;
+
 
         public Cars (int _x, int _y, int _xSpeed, int _ySpeed)
         {
@@ -19,25 +19,16 @@ namespace Frogger2
             y = _y;
             xSpeed = _xSpeed;
             ySpeed = _ySpeed;
+
+            //return Form1.GameScreen(GameScreen.Width, GameScreen.Height);
         }
 
 
         public void Move(int width, int height)
         {
-            x += xSpeed;
-            //Rectangle car1 = new Rectangle(x, y, height, width);
+            //x = GameScreen.Width;
+            x -= xSpeed;        
         }
-
-        //public void Collision(Ball b)
-        //{
-        //    Rectangle ballRec = new Rectangle(x, y, size, size);
-        //    Rectangle ball2Rec = new Rectangle(b.x, b.y, b.size, b.size);
-
-        //    if (ballRec.IntersectsWith(ball2Rec))
-        //    {
-        //        ySpeed *= -1;
-        //    }
-        //}
 
         public bool Collision(Player p)
         {

@@ -7,25 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing.Imaging;
 
 namespace Frogger2
 {
     public partial class GameScreen : UserControl
     {
-        Player hero;
+        
 
         //Cars carObstacle;
         List<Cars> cars = new List<Cars>();
         List<Logs> logs = new List<Logs>();
 
-        int Ccounter, L1counter, L2counter = 0;
-
+        Player hero;
         //control keys
         bool leftDown = false;
         bool rightDown = false;
         bool upDown = false;
         bool downDown = false;
+
+        int Ccounter, L1counter, L2counter;
 
         Pen frogPen = new Pen(Color.DarkGreen, 10);
         Brush blueBrush = new SolidBrush(Color.DarkBlue);
@@ -161,6 +161,12 @@ namespace Frogger2
             
             //Player dies
             if (hero.lives == 0)
+            {
+                gameTimer.Stop();
+                Form1.ChangeScreen(this, new LoseScreen());
+            }
+            //Player wins
+            if (hero.y == 0)
             {
                 gameTimer.Stop();
                 Form1.ChangeScreen(this, new WinScreen());
