@@ -26,7 +26,6 @@ namespace Frogger2
 
         public void Move(int width, int height)
         {
-            //x = GameScreen.Width;
             x -= xSpeed;        
         }
 

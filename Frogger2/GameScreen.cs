@@ -95,7 +95,7 @@ namespace Frogger2
             Ccounter++;
             if (Ccounter > 50 && Ccounter < 100)
             {
-                Cars newCar = new Cars(0, 235, 5, 5);
+                Cars newCar = new Cars(this.Width, 235, 5, 5);
                 cars.Add(newCar);
                 Ccounter = 0;
             }
