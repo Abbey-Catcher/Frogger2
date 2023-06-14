@@ -124,4 +124,10 @@
   <data name="FroggerLog" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FroggerLog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Trees2_Frogger" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Trees2-Frogger.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Trees_Frogger" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Trees-Frogger.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
