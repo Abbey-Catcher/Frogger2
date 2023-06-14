@@ -34,7 +34,7 @@ namespace Frogger2
             {
                 if (ySpeed > 0)
                 {
-                    p.y = 300;
+                    p.y = 310;
                     p.x = 300;
                 }
 

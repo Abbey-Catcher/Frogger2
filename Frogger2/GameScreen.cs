@@ -10,11 +10,15 @@ using System.Windows.Forms;
 
 namespace Frogger2
 {
+    //TO DO:
+
+    //Proper end point
+    //Trees
+    //Frog Picture
+
     public partial class GameScreen : UserControl
     {
-        
-
-        //Cars carObstacle;
+        //Obsticales
         List<Cars> cars = new List<Cars>();
         List<Logs> logs = new List<Logs>();
 
@@ -25,19 +29,18 @@ namespace Frogger2
         bool upDown = false;
         bool downDown = false;
 
-        int Ccounter, L1counter, L2counter;
+        bool canMove = true;
+
+        int playCounter, Ccounter, L1counter, L2counter;
 
         Pen frogPen = new Pen(Color.DarkGreen, 10);
         Brush blueBrush = new SolidBrush(Color.DarkBlue);
         Brush grayBrush = new SolidBrush(Color.DarkGray);
         Brush TestBrush = new SolidBrush(Color.Red);
-        //Brush LogBrush = new SolidBrush(Color.Brown);
-
 
         Rectangle waterway = new Rectangle(0, 60, 610, 30);
         Rectangle waterway2 = new Rectangle(0, 150, 610, 30);
-        Rectangle roadway = new Rectangle(0, 230, 610, 30);
-
+        Rectangle roadway = new Rectangle(0, 240, 610, 30);
         Rectangle endPoint = new Rectangle(285, 20, 15, 15);
 
         public GameScreen()
@@ -48,7 +51,7 @@ namespace Frogger2
 
         public void InitializeGame()
         {
-            hero = new Player(300, 300);
+            hero = new Player(300, 310);
             livesLabel.Text = "Lives: " + hero.lives;
         }
 
@@ -74,33 +77,48 @@ namespace Frogger2
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            if (upDown == true && hero.y > 0)
+            playCounter++;
+            if (playCounter == 15)
+            {
+                canMove = true;
+            }
+
+            if (upDown && hero.y > 0 && canMove)
             {
                 hero.Move("up");
+                canMove = false;
+                playCounter = 0;
             }
-            if (downDown == true && hero.y < this.Height - hero.height)
+            if (downDown && hero.y < this.Height - hero.height && canMove)
             {
                 hero.Move("down");
+                canMove = false;
+                playCounter = 0;
             }
-            if (leftDown == true && hero.x > 0)
+            if (leftDown && hero.x > 0 && canMove)
             {
                 hero.Move("left");
+                canMove = false;
+                playCounter = 0;
             }
-            if (rightDown == true && hero.x < this.Width - hero.width)
+            if (rightDown && hero.x < this.Width - hero.width && canMove)
             {
                 hero.Move("right");
+                canMove = false;
+                playCounter = 0;
             }
+
 
             //create obstacles
             Ccounter++;
             if (Ccounter > 50 && Ccounter < 100)
             {
-                Cars newCar = new Cars(this.Width, 235, 5, 5);
+                Cars newCar = new Cars(this.Width, 245, 5, 5);
                 cars.Add(newCar);
                 Ccounter = 0;
             }
             L1counter++;
-            if (L1counter > 25 && L1counter <  100) 
+            if (L1counter > 35 && L1counter <  100) 
             { 
                 Logs newLog = new Logs(0, 155, 5, 5);
                 logs.Add(newLog);
@@ -166,7 +184,7 @@ namespace Frogger2
                 Form1.ChangeScreen(this, new LoseScreen());
             }
             //Player wins
-            if (hero.y == 0)
+            if (hero.y <= 0)
             {
                 gameTimer.Stop();
                 Form1.ChangeScreen(this, new WinScreen());
@@ -180,10 +198,9 @@ namespace Frogger2
             e.Graphics.FillRectangle(blueBrush, waterway);
             e.Graphics.FillRectangle(blueBrush, waterway2);
             e.Graphics.FillRectangle(grayBrush, roadway);
-            e.Graphics.FillRectangle(TestBrush, endPoint);
             foreach (Cars c in cars)
             {
-                e.Graphics.DrawImage(Properties.Resources.car_Frogger, c.x, c.y, 40, 20);
+                e.Graphics.DrawImage(Properties.Resources.car_Frogger, c.x, c.y, -40, 20);
             }
             foreach (Logs l in logs)
             {

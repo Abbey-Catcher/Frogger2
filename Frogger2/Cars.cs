@@ -19,8 +19,6 @@ namespace Frogger2
             y = _y;
             xSpeed = _xSpeed;
             ySpeed = _ySpeed;
-
-            //return Form1.GameScreen(GameScreen.Width, GameScreen.Height);
         }
 
 
@@ -38,7 +36,7 @@ namespace Frogger2
             {
                 if (ySpeed > 0)
                 {
-                    p.y = 300;
+                    p.y = 310;
                     p.x = 300;
                 }
 
