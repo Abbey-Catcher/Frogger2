@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Frogger2
 {
-    internal class Cars
+    public class Cars
     {
         public int x, y, xSpeed, ySpeed;
         public int size = 20;

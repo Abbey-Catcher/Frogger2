@@ -75,6 +75,7 @@
     <Compile Include="LoseScreen.Designer.cs">
       <DependentUpon>LoseScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Trees.cs" />
     <Compile Include="WinScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -124,6 +125,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\FroggerLog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tree.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tree-Frogger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Frog.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

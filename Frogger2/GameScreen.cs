@@ -18,11 +18,13 @@ namespace Frogger2
 
     public partial class GameScreen : UserControl
     {
-        //Obsticales
+        //Obstacles
         List<Cars> cars = new List<Cars>();
         List<Logs> logs = new List<Logs>();
+        List<Trees> trees = new List<Trees>();
 
         Player hero;
+
         //control keys
         bool leftDown = false;
         bool rightDown = false;
@@ -42,6 +44,9 @@ namespace Frogger2
         Rectangle waterway2 = new Rectangle(0, 150, 610, 30);
         Rectangle roadway = new Rectangle(0, 240, 610, 30);
         Rectangle endPoint = new Rectangle(285, 20, 15, 15);
+
+        Random randGen = new Random();
+
 
         public GameScreen()
         {
@@ -132,6 +137,14 @@ namespace Frogger2
                 L2counter = 0;
             }
 
+            Trees newTree = new Trees(60, 280);
+            trees.Add(newTree);
+
+            Trees newTree2 = new Trees(this.Width - 60, 190);
+            trees.Add(newTree2);
+
+            Trees newTree3 = new Trees(140, 100);
+            trees.Add(newTree3);
 
             //move obstacles
             foreach (Cars c in cars)
@@ -206,8 +219,11 @@ namespace Frogger2
             {
                 e.Graphics.DrawImage(Properties.Resources.FroggerLog, l.x, l.y, 40, 20);
             }
-
-            e.Graphics.DrawRectangle(frogPen, hero.x, hero.y, 10, 10);
+            foreach (Trees t in trees)
+            {
+                e.Graphics.DrawImage(Properties.Resources.Tree_Frogger, t.x, t.y, 45, 40);
+            }
+            e.Graphics.DrawImage(Properties.Resources.Frog, hero.x, hero.y);
         }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
