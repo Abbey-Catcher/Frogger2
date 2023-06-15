@@ -13,8 +13,6 @@ namespace Frogger2
     //TO DO:
 
     //Proper end point
-    //Trees
-    //Frog Picture
 
     public partial class GameScreen : UserControl
     {
@@ -47,6 +45,11 @@ namespace Frogger2
 
         Random randGen = new Random();
 
+        Image log = Properties.Resources.FroggerLog;
+        Image tree = Properties.Resources.Tree_Frogger;
+        Image car = Properties.Resources.car_Frogger;
+        Image frog = Properties.Resources.Frog;
+
 
         public GameScreen()
         {
@@ -58,6 +61,15 @@ namespace Frogger2
         {
             hero = new Player(300, 310);
             livesLabel.Text = "Lives: " + hero.lives;
+
+            Trees newTree = new Trees(60, 280);
+            trees.Add(newTree);
+
+            Trees newTree2 = new Trees(this.Width - 60, 190);
+            trees.Add(newTree2);
+
+            Trees newTree3 = new Trees(140, 100);
+            trees.Add(newTree3);
         }
 
         private void keyup(object sender, KeyEventArgs e)
@@ -137,14 +149,6 @@ namespace Frogger2
                 L2counter = 0;
             }
 
-            Trees newTree = new Trees(60, 280);
-            trees.Add(newTree);
-
-            Trees newTree2 = new Trees(this.Width - 60, 190);
-            trees.Add(newTree2);
-
-            Trees newTree3 = new Trees(140, 100);
-            trees.Add(newTree3);
 
             //move obstacles
             foreach (Cars c in cars)
@@ -159,7 +163,7 @@ namespace Frogger2
             //remove off screen
             for (int i = 0; i < cars.Count; i++)
             {
-                if (cars[i].x >= 600)
+                if (cars[i].x >= 600 || cars[i].x < 0)
                 {
                     cars.RemoveAt(i);
                 }
@@ -213,17 +217,17 @@ namespace Frogger2
             e.Graphics.FillRectangle(grayBrush, roadway);
             foreach (Cars c in cars)
             {
-                e.Graphics.DrawImage(Properties.Resources.car_Frogger, c.x, c.y, -40, 20);
+                e.Graphics.DrawImage(car, c.x, c.y, -40, 20);
             }
             foreach (Logs l in logs)
             {
-                e.Graphics.DrawImage(Properties.Resources.FroggerLog, l.x, l.y, 40, 20);
+                e.Graphics.DrawImage(log, l.x, l.y, 40, 20);
             }
             foreach (Trees t in trees)
             {
-                e.Graphics.DrawImage(Properties.Resources.Tree_Frogger, t.x, t.y, 45, 40);
+                e.Graphics.DrawImage(tree, t.x, t.y, 45, 40);
             }
-            e.Graphics.DrawImage(Properties.Resources.Frog, hero.x, hero.y);
+            e.Graphics.DrawImage(frog, hero.x, hero.y);
         }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
