@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace Frogger2
 {
     public class Player
     {
         public int x, y;
-        public int speed = 33;
+        public int speed = 32;
         public int width = 10;
         public int height = 10;
         public int lives = 3;

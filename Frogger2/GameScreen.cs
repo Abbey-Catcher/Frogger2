@@ -41,14 +41,14 @@ namespace Frogger2
         Rectangle waterway = new Rectangle(0, 60, 610, 30);
         Rectangle waterway2 = new Rectangle(0, 150, 610, 30);
         Rectangle roadway = new Rectangle(0, 240, 610, 30);
-        Rectangle endPoint = new Rectangle(285, 20, 15, 15);
-
-        Random randGen = new Random();
+        Rectangle endPoint = new Rectangle(285, 5, 40, 15);
 
         Image log = Properties.Resources.FroggerLog;
         Image tree = Properties.Resources.Tree_Frogger;
         Image car = Properties.Resources.car_Frogger;
         Image frog = Properties.Resources.Frog;
+
+        string Finish = "finish!";
 
 
         public GameScreen()
@@ -105,26 +105,30 @@ namespace Frogger2
                 hero.Move("up");
                 canMove = false;
                 playCounter = 0;
+                frog.RotateFlip(RotateFlipType.RotateNoneFlipNone);
             }
             if (downDown && hero.y < this.Height - hero.height && canMove)
             {
                 hero.Move("down");
                 canMove = false;
                 playCounter = 0;
+                frog.RotateFlip(RotateFlipType.Rotate180FlipNone);
             }
             if (leftDown && hero.x > 0 && canMove)
             {
                 hero.Move("left");
                 canMove = false;
                 playCounter = 0;
+                frog.RotateFlip(RotateFlipType.Rotate270FlipNone);
             }
             if (rightDown && hero.x < this.Width - hero.width && canMove)
             {
                 hero.Move("right");
                 canMove = false;
                 playCounter = 0;
+                frog.RotateFlip(RotateFlipType.Rotate90FlipNone);
             }
-
+            frog.RotateFlip(RotateFlipType.RotateNoneFlipNone);
 
             //create obstacles
             Ccounter++;
@@ -201,7 +205,7 @@ namespace Frogger2
                 Form1.ChangeScreen(this, new LoseScreen());
             }
             //Player wins
-            if (hero.y <= 0)
+            if (hero.y <= endPoint.Bottom)
             {
                 gameTimer.Stop();
                 Form1.ChangeScreen(this, new WinScreen());
@@ -215,6 +219,7 @@ namespace Frogger2
             e.Graphics.FillRectangle(blueBrush, waterway);
             e.Graphics.FillRectangle(blueBrush, waterway2);
             e.Graphics.FillRectangle(grayBrush, roadway);
+            e.Graphics.DrawString(Finish, DefaultFont, TestBrush, endPoint);
             foreach (Cars c in cars)
             {
                 e.Graphics.DrawImage(car, c.x, c.y, -40, 20);
