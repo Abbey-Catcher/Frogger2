@@ -10,9 +10,6 @@ using System.Windows.Forms;
 
 namespace Frogger2
 {
-    //TO DO:
-
-    //Proper end point
 
     public partial class GameScreen : UserControl
     {
@@ -31,17 +28,19 @@ namespace Frogger2
 
         bool canMove = true;
 
-        int playCounter, Ccounter, L1counter, L2counter;
+        int playCounter, Ccounter, L1counter, L2counter, orientation;
 
-        Pen frogPen = new Pen(Color.DarkGreen, 10);
+        Pen pointPen = new Pen(Color.Red, 10);
         Brush blueBrush = new SolidBrush(Color.DarkBlue);
         Brush grayBrush = new SolidBrush(Color.DarkGray);
         Brush TestBrush = new SolidBrush(Color.Red);
 
-        Rectangle waterway = new Rectangle(0, 60, 610, 30);
-        Rectangle waterway2 = new Rectangle(0, 150, 610, 30);
-        Rectangle roadway = new Rectangle(0, 240, 610, 30);
-        Rectangle endPoint = new Rectangle(285, 5, 40, 15);
+        Font Font = new Font("TimesNewRoman", 16);
+
+        Rectangle waterway = new Rectangle(0, 90, 610, 30);
+        Rectangle waterway2 = new Rectangle(0, 180, 610, 30);
+        Rectangle roadway = new Rectangle(0, 270, 610, 30);
+        Rectangle endPoint = new Rectangle(285, 5, 70, 20);
 
         Image log = Properties.Resources.FroggerLog;
         Image tree = Properties.Resources.Tree_Frogger;
@@ -59,16 +58,16 @@ namespace Frogger2
 
         public void InitializeGame()
         {
-            hero = new Player(300, 310);
+            hero = new Player(120, 310);
             livesLabel.Text = "Lives: " + hero.lives;
 
-            Trees newTree = new Trees(60, 280);
+            Trees newTree = new Trees(60, 310);
             trees.Add(newTree);
 
-            Trees newTree2 = new Trees(this.Width - 60, 190);
+            Trees newTree2 = new Trees(this.Width - 60, 220);
             trees.Add(newTree2);
 
-            Trees newTree3 = new Trees(140, 100);
+            Trees newTree3 = new Trees(140, 130);
             trees.Add(newTree3);
         }
 
@@ -105,50 +104,70 @@ namespace Frogger2
                 hero.Move("up");
                 canMove = false;
                 playCounter = 0;
-                frog.RotateFlip(RotateFlipType.RotateNoneFlipNone);
+                orientation = 1;
             }
             if (downDown && hero.y < this.Height - hero.height && canMove)
             {
                 hero.Move("down");
                 canMove = false;
                 playCounter = 0;
-                frog.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                orientation = 2;
             }
             if (leftDown && hero.x > 0 && canMove)
             {
                 hero.Move("left");
                 canMove = false;
                 playCounter = 0;
-                frog.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                orientation = 3;
             }
             if (rightDown && hero.x < this.Width - hero.width && canMove)
             {
                 hero.Move("right");
                 canMove = false;
                 playCounter = 0;
-                frog.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                orientation = 4;
             }
-            frog.RotateFlip(RotateFlipType.RotateNoneFlipNone);
+            
+            if (orientation == 1)
+            {
+                frog.RotateFlip(RotateFlipType.RotateNoneFlipNone);
+                orientation = 0;
+            }
+            if (orientation == 2)
+            {
+                frog.RotateFlip(RotateFlipType.Rotate180FlipNone);
+                orientation = 0;
+            }
+            if (orientation == 3)
+            {
+                frog.RotateFlip(RotateFlipType.Rotate270FlipNone);
+                orientation = 0;
+            }
+            if (orientation == 4)
+            {
+                frog.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                orientation = 0;
+            }
 
             //create obstacles
             Ccounter++;
             if (Ccounter > 50 && Ccounter < 100)
             {
-                Cars newCar = new Cars(this.Width, 245, 5, 5);
+                Cars newCar = new Cars(this.Width, 275, 5, 5);
                 cars.Add(newCar);
                 Ccounter = 0;
             }
             L1counter++;
             if (L1counter > 35 && L1counter <  100) 
             { 
-                Logs newLog = new Logs(0, 155, 5, 5);
+                Logs newLog = new Logs(0, 185, 5, 5);
                 logs.Add(newLog);
                 L1counter = 0;
             }
             L2counter++;
             if (L2counter > 30 && L2counter < 75)
             {
-                Logs newLog = new Logs(0, 65, 5, 5);
+                Logs newLog = new Logs(0, 95, 5, 5);
                 logs.Add(newLog);
                 L2counter = 0;
             }
@@ -219,7 +238,7 @@ namespace Frogger2
             e.Graphics.FillRectangle(blueBrush, waterway);
             e.Graphics.FillRectangle(blueBrush, waterway2);
             e.Graphics.FillRectangle(grayBrush, roadway);
-            e.Graphics.DrawString(Finish, DefaultFont, TestBrush, endPoint);
+            e.Graphics.DrawString(Finish, Font, TestBrush, endPoint);
             foreach (Cars c in cars)
             {
                 e.Graphics.DrawImage(car, c.x, c.y, -40, 20);
@@ -240,10 +259,14 @@ namespace Frogger2
             if (e.KeyCode == Keys.Up)
             {
                 upDown = true;
+                //set frog to up image
             }
             if (e.KeyCode == Keys.Down)
             {
                 downDown = true;
+                //set frog to down image
+
+
             }
             if (e.KeyCode == Keys.Left)
             {
