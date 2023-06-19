@@ -224,7 +224,7 @@ namespace Frogger2
                 Form1.ChangeScreen(this, new LoseScreen());
             }
             //Player wins
-            if (hero.y <= endPoint.Bottom)
+            if (hero.y <= endPoint.Bottom && hero.x >= endPoint.Left && hero.x <= endPoint.Right)
             {
                 gameTimer.Stop();
                 Form1.ChangeScreen(this, new WinScreen());
