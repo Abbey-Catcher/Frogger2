@@ -83,9 +83,39 @@ namespace Frogger2.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FrogDown {
+            get {
+                object obj = ResourceManager.GetObject("FrogDown", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FroggerLog {
             get {
                 object obj = ResourceManager.GetObject("FroggerLog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FrogLeft {
+            get {
+                object obj = ResourceManager.GetObject("FrogLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FrogRight {
+            get {
+                object obj = ResourceManager.GetObject("FrogRight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

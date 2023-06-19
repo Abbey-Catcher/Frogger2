@@ -124,8 +124,17 @@
   <data name="Frog" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Frog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FrogDown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrogDown.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="FroggerLog" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\FroggerLog.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrogLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrogLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FrogRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FrogRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Tree_Frogger" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tree-Frogger.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

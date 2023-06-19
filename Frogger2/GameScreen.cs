@@ -27,6 +27,10 @@ namespace Frogger2
         bool downDown = false;
 
         bool canMove = true;
+        bool imageU = false;
+        bool imageD = false;
+        bool imageR = false;
+        bool imageL = false;
 
         int playCounter, Ccounter, L1counter, L2counter, orientation;
 
@@ -45,7 +49,11 @@ namespace Frogger2
         Image log = Properties.Resources.FroggerLog;
         Image tree = Properties.Resources.Tree_Frogger;
         Image car = Properties.Resources.car_Frogger;
-        Image frog = Properties.Resources.Frog;
+
+        Image frogU = Properties.Resources.Frog;
+        Image frogR = Properties.Resources.FrogRight;
+        Image frogL = Properties.Resources.FrogLeft;
+        Image frogD = Properties.Resources.FrogDown;
 
         string Finish = "finish!";
 
@@ -58,6 +66,7 @@ namespace Frogger2
 
         public void InitializeGame()
         {
+            imageU = true;
             hero = new Player(120, 310);
             livesLabel.Text = "Lives: " + hero.lives;
 
@@ -76,18 +85,34 @@ namespace Frogger2
             if (e.KeyCode == Keys.Up)
             {
                 upDown = false;
+                imageU = true;
+                imageD = false;
+                imageR = false;
+                imageL = false;
             }
             if (e.KeyCode == Keys.Down)
             {
                 downDown = false;
+                imageD = true;
+                imageU = false;
+                imageR = false;
+                imageL = false;
             }
             if (e.KeyCode == Keys.Left)
             {
                 leftDown = false;
+                imageL = true;
+                imageD = false;
+                imageR = false;
+                imageU = false;
             }
             if (e.KeyCode == Keys.Right)
             {
                 rightDown = false;
+                imageR = true;
+                imageD = false;
+                imageU = false;
+                imageL = false;
             }
         }
 
@@ -104,49 +129,24 @@ namespace Frogger2
                 hero.Move("up");
                 canMove = false;
                 playCounter = 0;
-                orientation = 1;
             }
             if (downDown && hero.y < this.Height - hero.height && canMove)
             {
                 hero.Move("down");
                 canMove = false;
                 playCounter = 0;
-                orientation = 2;
             }
             if (leftDown && hero.x > 0 && canMove)
             {
                 hero.Move("left");
                 canMove = false;
                 playCounter = 0;
-                orientation = 3;
             }
             if (rightDown && hero.x < this.Width - hero.width && canMove)
             {
                 hero.Move("right");
                 canMove = false;
                 playCounter = 0;
-                orientation = 4;
-            }
-            
-            if (orientation == 1)
-            {
-                frog.RotateFlip(RotateFlipType.RotateNoneFlipNone);
-                orientation = 0;
-            }
-            if (orientation == 2)
-            {
-                frog.RotateFlip(RotateFlipType.Rotate180FlipNone);
-                orientation = 0;
-            }
-            if (orientation == 3)
-            {
-                frog.RotateFlip(RotateFlipType.Rotate270FlipNone);
-                orientation = 0;
-            }
-            if (orientation == 4)
-            {
-                frog.RotateFlip(RotateFlipType.Rotate90FlipNone);
-                orientation = 0;
             }
 
             //create obstacles
@@ -251,7 +251,23 @@ namespace Frogger2
             {
                 e.Graphics.DrawImage(tree, t.x, t.y, 45, 40);
             }
-            e.Graphics.DrawImage(frog, hero.x, hero.y);
+
+            if (imageU)
+            {
+                e.Graphics.DrawImage(frogU, hero.x, hero.y);
+            }
+            if (imageD)
+            {
+                e.Graphics.DrawImage(frogD, hero.x, hero.y);
+            }
+            if (imageL)
+            {
+                e.Graphics.DrawImage(frogL, hero.x, hero.y);
+            }
+            if (imageR)
+            {
+                e.Graphics.DrawImage(frogR, hero.x, hero.y);
+            }
         }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -259,14 +275,10 @@ namespace Frogger2
             if (e.KeyCode == Keys.Up)
             {
                 upDown = true;
-                //set frog to up image
             }
             if (e.KeyCode == Keys.Down)
             {
                 downDown = true;
-                //set frog to down image
-
-
             }
             if (e.KeyCode == Keys.Left)
             {

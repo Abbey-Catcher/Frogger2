@@ -10,7 +10,7 @@ namespace Frogger2
     public class Player
     {
         public int x, y;
-        public int speed = 32;
+        public int speed = 30;
         public int width = 10;
         public int height = 10;
         public int lives = 3;
