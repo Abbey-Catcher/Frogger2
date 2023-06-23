@@ -32,7 +32,7 @@ namespace Frogger2
         bool imageR = false;
         bool imageL = false;
 
-        int playCounter, Ccounter, L1counter, L2counter, orientation;
+        int playCounter, Ccounter, L1counter, L2counter;
 
         Pen pointPen = new Pen(Color.Red, 10);
         Brush blueBrush = new SolidBrush(Color.DarkBlue);

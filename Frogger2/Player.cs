@@ -7,16 +7,7 @@ using System.Drawing;
 
 namespace Frogger2
 {
-    public class Player
-    {
-        public int x, y;
-        public int speed = 32;
-        public int width = 10;
-        public int height = 10;
-        public int lives = 3;
-
-        public Player(int _x, int _y)
-        {
+    publi   {
             x = _x;
             y = _y;
         }
@@ -39,6 +30,15 @@ namespace Frogger2
             {
                 x += speed;
             }
-        }
+        }c class Player
+    {
+        public int x, y;
+        public int speed = 32;
+        public int width = 10;
+        public int height = 10;
+        public int lives = 3;
+
+        public Player(int _x, int _y)
+     
     }
 }
